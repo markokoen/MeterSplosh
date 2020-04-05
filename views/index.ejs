@@ -1,0 +1,47 @@
+<% include partials/header.ejs %>
+<div class="table-wrapper">
+    <% if (tenants.length > 0) {%>
+    <table class="table table-hovered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">TenantID</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Meter ID</th>
+                <th scope="col">Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% tenants.forEach((tenant, index) => { %>
+            <tr>
+                <th scope="row">
+                    <%= tenant.TenantID %>
+                </th>
+                <td>
+                    <%= tenant.FullName %>
+                </td>
+                <td>
+                    <%= tenant.Email %>
+                </td>
+                <td>
+                    <%= tenant.MeterID %>
+                </td>
+                <td>
+                    <%= tenant.Phone %>
+                </td>
+                <td>
+                    <a href="/edit/<%= tenant.TenantID %>" target="_blank" rel="noopener" class="btn btn-sm btn-success">Edit</a>
+                    <a href="/delete/<%= tenant.TenantID %>" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <% } else { %>
+    <p class="text-center">No Tenants found. Go <a href="/register">here</a> to Register Tenant.</p>
+    <% } %>
+</div>
+</div>
+</body>
+
+</html>
